@@ -1,0 +1,246 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
+
+    <style>
+        body {
+                background: white; /* For browsers that do not support gradients */
+                background: -webkit-linear-gradient(#333399,#b81fc6,#deace2); /* For Safari 5.1 to 6.0 */
+                background: -o-linear-gradient(#333399,#b81fc6,#deace2); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(#333399,#b81fc6,#deace2); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(#333399,#b81fc6,#deace2); /* Standard syntax */
+                font-family: 'Asap', sans-serif;
+                color: white;
+        }
+
+        . .content {
+            margin-left: auto;
+            margin-right: auto;
+            width: 400px;
+        }
+
+        .input {
+            margin-top: 50px;
+        }
+
+        select {
+            border: none;
+            font-size: 13px;
+        }
+
+        button {
+            height: 30px;
+            background-color: white;
+            color: black;
+        }
+
+        #timer {
+            font-size: 80px;
+        }
+
+        .poop {
+            
+            padding: 40px;
+            margin-bottom: 20px;
+            color: black;
+           
+           
+
+        }
+       .question {
+  animation: question 4s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes question {
+  0% { transform: translateY(0) }
+  25% { transform: translateY(-6px) }
+  50% { transform: translateY(0) }
+  100% { transform: translateY(0) }
+}
+
+.question {
+            border: 1px #efefef solid;
+            padding: 40px;
+            margin-bottom: 20px;
+            color: black;
+            background-color: white;
+
+
+
+       .question {
+  animation: question 4s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes question {
+  0% { transform: translateY(0) }
+  25% { transform: translateY(-6px) }
+  50% { transform: translateY(0) }
+  100% { transform: translateY(0) }
+}
+
+.question {
+            border: 1px #efefef solid;
+            padding: 40px;
+            margin-bottom: 20px;
+            color: black;
+            background-color: white;
+
+    </style>
+</head>
+
+<body>
+    <div class="content">
+
+    <h1> Maybe Later </h1>
+
+    <!-- Name -->
+    <div id="timer"></div>
+        <div id="page"> 
+            
+        <div class="input">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="user_name" value="me">
+        </div>
+        
+   
+
+
+
+
+    <!-- Grade -->
+    <div class="input">
+    <label for="grade">Grade:</label>
+    <select name="select" id="grade"> <!--Supplement an id here instead of using 'name'-->
+     <option value="_" selected>Grade</option>
+      <option value="Freshman" >Freshman</option>
+       <option value="Sophmore">Sophmore</option> 
+      <option value="Junior">Junior</option>
+      <option value="Senior">Senior</option>
+    </select>
+        </div>
+
+
+    <!-- Work Hours -->
+    <div class="input">
+    <label for="select">Study hours:</label>
+    <select name="select"> <!--Supplement an id here instead of using 'name'-->
+     <option value="_" selected>Work Hours</option>
+      <option value="1" >One Hour</option>
+       <option value="2">Two Hours</option> 
+      <option value="3">Three Hours</option>
+     
+    </select>
+    </div>
+
+    <!-- Break time (minutes) -->
+    <div class="input">
+    <label for="select">Break time:</label>
+    <select name="select"> 
+     
+      <option value="Breaktime(minutes)" selected>Breaktime(minutes)</option>
+      <option value="5" >5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+    </select>
+    </div>
+
+    <div class="input">
+        <button onclick="submitUserInfo()">Submit</button>
+    </div>
+
+
+    </div>
+</div>
+<script>
+
+function submitUserInfo() {
+     var grade = document.getElementById("grade").value;
+ 
+    window.name= document.getElementById("name").value;
+document.getElementById("page").innerHTML = '<div class="poop">' + '<select name="select" id="subject">' +
+ 
+  '<option value="subject" selected>Select subject</option>' +
+  '<option value="Math" >Math</option>' +
+  '<option value="English">English</option>' +
+  '<option value="Science">Science</option>' +
+'</select>' + 
+'</div>' +
+'<div class="poop">'+
+'<select name="select" id="time">' +
+ 
+  '<option value="time" selected>Select time</option>' +
+  '<option value="1" >1 Hour</option>' +
+  '<option value="2"> 2 Hours</option>' +
+  '<option value="3"> 3 Hours</option>' +
+'</select>' + 
+'</div>' +
+'<button onclick="submitSubject()">Submit</button>';
+ 
+
+}
+var hours;
+var secondsRemaining;
+var seconds;
+var minutes;
+
+function submitSubject() {
+    window.subject = document.getElementById("subject").value;
+     hours = parseInt(document.getElementById("time").value);
+     console.log(hours);
+    secondsRemaining = hours * 3600;
+     seconds = secondsRemaining%60;
+     minutes = Math.floor(secondsRemaining/60) ;
+    document.getElementById("timer").innerHTML = minutes + ':' + seconds;
+document.getElementById("page").innerHTML = '<button onclick="showQuiz()">show me Quiz</button>';
+    
+    setInterval(function(){
+        secondsRemaining = secondsRemaining - 1;
+        seconds = secondsRemaining%60;
+        minutes = Math.floor(secondsRemaining/60);
+        document.getElementById("timer").innerHTML = minutes + ':' + seconds;
+    
+}, 1000);
+}
+
+function showQuiz () {
+document.getElementById("page").innerHTML = '<div class="question">1.)What is the slope of y= 4x+2 ?'+' <select name="select" id="question1">' +
+ 
+  
+  '<option value="4" >4 </option>' +
+  '<option value="2"> 2</option>' +
+  '<option value="6"> 6</option>' +
+'</select></div>'+
+'<div  class="question">2.)Given y=4x+2,what is y if x=2'+' <select name="select" id="question2">' +
+ 
+  
+  '<option value="6" >6 </option>' +
+  '<option value="10"> 10</option>' +
+  '<option value="12"> 12</option>' +
+'</select></div>'+
+
+'<div  class="question">3.)What is the pythagorean theorem?'+' <select name="select" id="question3">' +
+ 
+  
+  '<option value="E=mc^2" >E=mc^2 </option>' +
+  '<option value="a^2 + b^2 = c^2">a^2 + b^2 = c^2 </option>' +
+  '<option value="y=mx+b"> y=mx+b</option>' +
+'</select></div>' + '<button onclick="checkAnswers()">Check my answers!</button>';
+}
+function checkAnswers () {
+    if(document.getElementById("question1").value ==4 &&
+        document.getElementById("question2").value ==10 &&
+        document.getElementById("question3").value == "a^2 + b^2 = c^2"){
+        alert("Sike keep studying, you arent done!");
+
+    } else{
+        secondsRemaining = secondsRemaining +600;
+        alert("You just got 10 minutes added to your work time, maybe you should keep studying.");
+
+    }
+}
+</script>
+</body>
+</html>
